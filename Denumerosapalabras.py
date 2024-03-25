@@ -1,8 +1,17 @@
-import inflect
 from num2words import num2words
 
 def numero_a_palabras(numero):
-    palabras = num2words(numero, lang='es')
-    return palabras
+    parte_entera = int(numero)
+    parte_decimal = int(round((numero - parte_entera) * 100))
+    palabras_enteras = num2words(parte_entera, lang='es')
+    return f"{palabras_enteras} pesos {parte_decimal}/100 M.N."
 
-print(numero_a_palabras(123))
+print("Bienvenido al convertidor de números a palabras para cheques")
+numero= None
+while numero is None:
+    try:
+        numero = float(input("Dame un número: "))
+        print(numero_a_palabras(numero))
+    except ValueError:
+        print("Eso no es un número")
+        continue
