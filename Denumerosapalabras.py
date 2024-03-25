@@ -4,6 +4,8 @@ def numero_a_palabras(numero):
     parte_entera = int(numero)
     parte_decimal = int(round((numero - parte_entera) * 100))
     palabras_enteras = num2words(parte_entera, lang='es')
+    if parte_entera % 10 == 1 and parte_entera != 11:
+        palabras_enteras = palabras_enteras.replace('uno', 'un')
     return f"{palabras_enteras} pesos {parte_decimal}/100 M.N."
 
 print("Bienvenido al convertidor de números a palabras para cheques")
