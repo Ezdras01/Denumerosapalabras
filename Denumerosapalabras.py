@@ -11,6 +11,10 @@ numero= None
 while numero is None:
     try:
         numero = float(input("Dame un número: "))
+        if numero < 0:
+            print("No se aceptan cantidades negativas")
+            numero = None
+            continue
         print(numero_a_palabras(numero))
     except ValueError:
         print("Eso no es un número")
